@@ -5,7 +5,7 @@
 typedef unsigned int uint;
 
 #define PI 3.141592653589792f
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 256
 
 typedef struct complex
 {
@@ -114,7 +114,7 @@ void fft(complex* buffer0)
 
 void fold(complex* in, float* out)
 {
-    for (uint i = 1; i < BUFFER_SIZE / 2; ++i)
+    for (uint i = 0; i < BUFFER_SIZE / 2; ++i)
     {
         complex temp = in[i];
         out[i] = sqrtf(temp.r * temp.r + temp.i * temp.i);
