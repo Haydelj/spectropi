@@ -32,7 +32,8 @@ complex mult(complex a, complex b)
 float cos_32s(float x)
 {
     float x_sq = x * x;
-    return 0.99940307f + x_sq * (-0.49558072f + 0.03679168f * x_sq);
+    //return 0.99940307f + x_sq * (-0.49558072f + 0.03679168f * x_sq);
+	return 0.9999932946f + x_sq * (-0.4999124376f + x_sq * (0.0414877472f + x_sq * -0.0012712095f));
 }
 
 //only valid to 3.2 digits and for -2*PI to 2*PI
@@ -116,11 +117,8 @@ void fold(complex* in, float* out)
 {
     for (uint i = 0; i < BUFFER_SIZE / 2; ++i)
     {
-        complex temp = in[i];
-        out[i] = sqrtf(temp.r * temp.r + temp.i * temp.i);
-
-		temp = in[BUFFER_SIZE - i - 1];
-        out[i] += sqrtf(temp.r * temp.r + temp.i * temp.i);
+        complex temp = in[BUFFER_SIZE - i - 1];
+        out[i] = temp.r * temp.r + temp.i * temp.i;
     }
 }
 
