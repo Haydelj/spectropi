@@ -58,8 +58,8 @@ uint8_t number_lut[4][4] = {{0x1, 0x2, 0x3, 0xa},
 
 uint8_t debouncers[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-uint8_t code[] = {3, 1, 4, 1, 5, 9};
-#define CODE_LENGTH 6
+uint8_t passcode[] = {3, 1, 4, 1, 5, 9};
+#define PASSCODE_LENGTH 6
 
 #define max(a,b) (a > b ? a : b)
 
@@ -144,7 +144,7 @@ int main()
 		fold(complex_buffer, power_spectrum);
 		uint number = check_number();
 
-		if(digit < CODE_LENGTH)
+		if(digit < PASSCODE_LENGTH)
 		{
 			if(number >= 16)
 			{
@@ -162,8 +162,8 @@ int main()
 			}
 			else
 			{
-				if(number == code[digit]) digit_correct = 1;
-				else                      digit_correct = 0;
+				if(number == passcode[digit]) digit_correct = 1;
+				else                          digit_correct = 0;
 			}
 		}
 		else if(correct) locked = 0;
